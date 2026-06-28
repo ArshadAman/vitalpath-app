@@ -1,113 +1,109 @@
-# VitalPath Mobile App - Personal Health Navigation System
+# VitalPath Mobile App – Personal Health Navigation System Client
 
-This is the mobile application frontend for **VitalPath**, a preventive healthcare platform that continuously tracks lifestyle behaviors, medical histories, and health reports to predict health scores and recommend personalized actions.
-
-The app is built using **React Native** and **Expo SDK 56**, enabling a cross-platform (iOS & Android) experience with native performance and rich animations.
+This is the mobile frontend client for **VitalPath**, built using **React Native** and **Expo**. It provides the primary user interfaces for tracking lifestyle logs, parsing medical reports, translating voice journal notes, visualizing health trajectories, and tracking fitness goals.
 
 ---
 
-## 1. Features & Integrations
+## 1. Tech Stack & Library Integrations
 
-The app serves as the user-facing interface for the VitalPath ecosystem, connecting with the VitalPath backend to provide:
+This app is built on **Expo SDK 56**. The following libraries are integrated to cover the SRS requirements:
 
-*   **Secure Authentication**:
-    *   Social Authentication via **Google Sign-In** and **Apple Sign-In**.
-    *   OTP verification flows and secure JWT session persistence using `expo-secure-store`.
-*   **Health Tracking & Analytics**:
-    *   Activity, sleep, weight, and blood pressure trackers.
-    *   Interactive maps for tracking outdoor activities using `react-native-maps` and `expo-location`.
-*   **Medical Reports & OCR**:
-    *   Upload health/lab reports (PDFs or images) using `expo-document-picker` and `expo-image-picker`.
-*   **Speech & Voice Input**:
-    *   Voice memo transcription and translation via `expo-av` audio recording.
-*   **Chronological Health Timeline**:
-    *   Searchable and filterable history of all user health events, logs, and medical records.
-*   **Visual Health Metrics & Scores**:
-    *   Visual representation of the Overall Health Score (0-100) and Biological Age.
-*   **Push Notifications**:
-    *   Real-time notifications and alerts powered by `expo-notifications`.
-*   **Rich Micro-interactions**:
-    *   Immersive state transitions and animations powered by `lottie-react-native`.
-
----
-
-## 2. Tech Stack
-
-*   **Framework**: Expo (SDK 56) & React Native.
-*   **Navigation**: React Navigation v7 (`@react-navigation/native` & `@react-navigation/native-stack`).
-*   **Sensors & Core APIs**:
-    *   Location tracking: `expo-location`
-    *   Audio recording: `expo-av`
-    *   Secure Storage: `expo-secure-store`
-    *   Pickers: `expo-image-picker`, `expo-document-picker`, `@react-native-community/datetimepicker`
-*   **UI & Visuals**:
-    *   Maps: `react-native-maps`
-    *   Animations: `lottie-react-native`
-    *   Icons/Fonts: `expo-font`
+*   **Authentication (Module 1)**:
+    *   `@react-native-google-signin/google-signin`: Native Google Sign-In SDK integration.
+    *   `expo-apple-authentication`: Apple Sign-In support.
+    *   `expo-secure-store`: Encrypted local keychain/keystore to safely persist access tokens.
+*   **Timeline View & Filtering (Module 3)**:
+    *   `@react-native-community/datetimepicker`: Modal picker to filter timeline events by date range.
+*   **Medical Report Management (Module 4)**:
+    *   `expo-document-picker`: Document selector to upload PDF files from device storage.
+    *   `expo-image-picker`: Gallery/camera selector to capture report page screenshots.
+*   **Lifestyle Tracking (Module 5)**:
+    *   `@react-native-async-storage/async-storage`: Local key-value database for data caching.
+*   **Voice Health Journal (Module 6)**:
+    *   `expo-av`: Native audio recorder interface for capturing voice journal notes.
+*   **Location Context Engine (Module 7)**:
+    *   `expo-location`: Foreground and background geofencing tracking to detect nearby health places.
+    *   `react-native-maps`: Map widget canvas visualizing geofences.
+*   **Notifications Engine (Module 17)**:
+    *   `expo-notifications` & `expo-device`: Native device listeners to capture FCM push tokens.
+*   **Premium UX & Micro-Animations**:
+    *   `lottie-react-native`: Vector graphics player for interactive dashboard metrics, score dials, and goal milestone celebrations.
+    *   `expo-font`: Supporting custom premium typography interfaces.
+    *   `@react-navigation/native` & `@react-navigation/native-stack`: Stack-based native transition routers.
+    *   `react-native-screens` & `react-native-safe-area-context`: Safe padding layout constraints.
 
 ---
 
-## 3. Directory Structure
+## 2. Codebase Directory Layout
 
-Recommended/standard directory structure for the app:
+We recommend structuring the mobile code under the following folders:
 
-```text
+```
 app/
-├── assets/                    # Static assets (images, icons, fonts, animations)
-├── src/                       # Application source code
-│   ├── components/            # Reusable UI components (buttons, inputs, cards)
-│   ├── screens/               # Screen components (Dashboard, Timeline, Tracking, Profile, Auth)
-│   ├── navigation/            # Navigation routers and stack configurations
-│   ├── services/              # API clients, local storage handlers, and integration layer
-│   ├── hooks/                 # Custom React hooks (useAuth, useLocation, etc.)
-│   ├── context/               # Global state contexts (AuthContext, ThemeContext)
-│   └── utils/                 # Helper functions and constants
-├── App.js                     # Root component and navigation container provider
-├── app.json                   # Expo configuration file
-├── package.json               # Project dependencies and script shortcuts
-└── README.md                  # App documentation
+├── assets/                    # Image media, vector icons, custom fonts, and Lottie animations
+├── src/
+│   ├── components/            # Reusable UI widgets (Buttons, Input, LoadingModal)
+│   ├── screens/               # Screen views:
+│   │   ├── auth/              # Registration, Login, and OTP verification views
+│   │   ├── profile/           # Demographic and medical history profile setups
+│   │   ├── timeline/          # Chronological timeline feed with filters and search
+│   │   ├── reports/           # File selection progress and OCR manual correction views
+│   │   ├── tracking/          # Manual lifestyle logging forms and stats charts
+│   │   ├── voice/             # Audio recording visualizer and transcripts list
+│   │   ├── dashboard/         # Health Score meters and recommendation sliders
+│   │   └── goals/             # Goals targets lists and notifications settings
+│   ├── navigation/            # Bottom Tab and Stack navigation routers
+│   ├── services/              # API communications client layer (Axios/Fetch requests)
+│   ├── hooks/                 # Shared React hooks (useAuth, useNotifications, useLocation)
+│   └── utils/                 # Utility helpers (unit converters, date formattings)
+├── App.js                     # Root entry wrapper (loads configurations and checks login state)
+├── app.json                   # Expo configs and native plugin registrations
+├── index.js                   # Application entry point registered with AppRegistry
+└── package.json               # JavaScript/Expo dependencies lists
 ```
 
 ---
 
-## 4. Local Setup & Running
+## 3. Local Development Setup
 
 ### Prerequisites
+* **Node.js**: Version `v18` or `v20`.
+* **Package Manager**: `npm`.
+* **Simulation Device**:
+  - iOS: Simulator via Xcode
+  - Android: Android Virtual Device (AVD) emulator via Android Studio
+  - Physical Device: Expo Go App installed from Apple App Store / Google Play Store.
 
-Ensure you have the following installed:
-*   [Node.js](https://nodejs.org/) (v18+ recommended)
-*   [Expo Go](https://expo.dev/client) app installed on your physical device, or an Android/iOS emulator configured on your development machine.
-
-### Installation
-
-1.  Navigate to the app folder:
-    ```bash
-    cd app
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-
-### Run the App
-
-Start the Expo Development Server:
-```bash
-npm start
-```
-
-Once the dev server is running, you can:
-*   Press **`a`** to open in the Android emulator.
-*   Press **`i`** to open in the iOS simulator.
-*   Scan the QR code printed in the terminal using your physical device's camera (iOS) or the Expo Go app (Android).
+### Execution Instructions
+1. Install npm packages:
+   ```bash
+   npm install
+   ```
+2. Start the Expo development server:
+   ```bash
+   npx expo start
+   ```
+3. Run on simulation target:
+   - Press **`i`** to launch on Xcode iOS Simulator.
+   - Press **`a`** to launch on Android Emulator.
+   - Scan the terminal's QR code using the iOS Camera app or the Android Expo Go app to launch on a physical device.
 
 ---
 
-## 5. Connecting to the Backend
+## 4. API Backend Connection
 
-By default, the app expects to communicate with the VitalPath backend. 
+The mobile app must connect to the local FastAPI backend. Depending on the target environment, configure the backend base URL in `src/services/api.js` accordingly:
 
-*   **Development Link**: Update your API client settings (to be configured in `src/services/api.js` or similar) to point to your local development backend server:
-    *   **iOS Simulator**: `http://localhost:8000`
-    *   **Android Emulator**: `http://10.0.2.2:8000` (Android's alias to the host loopback)
-    *   **Physical Device**: Use your computer's local IP address (e.g., `http://192.168.x.x:8000`), ensuring both your computer and phone are on the same Wi-Fi network.
+*   **iOS Simulator**: Can connect using localhost directly:
+    ```javascript
+    const BASE_URL = "http://localhost:8000";
+    ```
+*   **Android Emulator**: Must route through the emulator gateway:
+    ```javascript
+    const BASE_URL = "http://10.0.2.2:8000";
+    ```
+*   **Physical Device / Expo Go**: Must point to the host machine's local network IP address:
+    ```javascript
+    const BASE_URL = "http://192.168.1.XX:8000"; // replace with local IP
+    ```
+    *(Note: The physical device must be connected to the exact same Wi-Fi network as the host machine.)*
