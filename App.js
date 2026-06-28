@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { getStoredToken } from './src/services/auth';
 import AppNavigator from './src/navigation/AppNavigator';
 
@@ -26,23 +27,23 @@ export default function App() {
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#0ea5e9" />
+        <ActivityIndicator size="large" color="#2b6c00" />
       </View>
     );
   }
 
   return (
-    <>
-      <StatusBar style="light" />
+    <SafeAreaProvider>
+      <StatusBar style="dark" />
       <AppNavigator token={token} setToken={setToken} />
-    </>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#fbf9f8',
     justifyContent: 'center',
     alignItems: 'center',
   },

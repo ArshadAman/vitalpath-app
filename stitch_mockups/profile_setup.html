@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>VitalPath - Profile Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#87fe45",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-container": "#2fb8ff",
+                        "secondary-fixed": "#c8e6ff",
+                        "on-surface-variant": "#3f4a36",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#2b6c00",
+                        "on-secondary-fixed": "#001e2e",
+                        "on-tertiary-container": "#574300",
+                        "on-primary-container": "#1e5000",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#becbb1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3f2",
+                        "surface-bright": "#fbf9f8",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#6be026",
+                        "tertiary-fixed-dim": "#f4bf00",
+                        "tertiary": "#755b00",
+                        "on-secondary-container": "#004666",
+                        "outline": "#6f7b64",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary": "#2b6c00",
+                        "surface": "#fbf9f8",
+                        "background": "#fbf9f8",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdf92",
+                        "on-primary-fixed-variant": "#1f5100",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#88ceff",
+                        "inverse-primary": "#6be026",
+                        "secondary": "#006590",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container-high": "#eae8e7",
+                        "on-background": "#1b1c1c",
+                        "tertiary-container": "#ddad00",
+                        "error": "#ba1a1a",
+                        "primary-container": "#58cc02",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-fixed": "#082100",
+                        "primary-shadow": "#58A700",
+                        "border-gray": "#E5E5E5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Nunito Sans", "sans-serif"],
+                        "display": ["Nunito Sans", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                        "label": ["Nunito Sans", "sans-serif"]
+                    },
+                    fontSize: {
+                        "display-lg": ["40px", { lineHeight: "46px", letterSpacing: "-0.01em", fontWeight: "800" }],
+                        "headline-lg": ["32px", { lineHeight: "38px", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "30px", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "26px", fontWeight: "700" }],
+                        "body-md": ["15px", { lineHeight: "22px", fontWeight: "700" }],
+                        "label-lg": ["16px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "800" }],
+                        "label-sm": ["13px", { lineHeight: "16px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 700; }
+        
+        /* Tactical Skeuomorphic Button Styles */
+        .btn-primary {
+            background-color: #58cc02; /* primary-container */
+            color: #ffffff;
+            border-bottom: 4px solid #58A700; /* primary-shadow */
+            border-radius: 1rem;
+            transition: all 0.1s ease;
+        }
+        .btn-primary:active {
+            transform: translateY(4px);
+            border-bottom-width: 0px;
+            margin-bottom: 4px;
+        }
+        
+        .input-heavy {
+            border: 2px solid #E5E5E5;
+            background-color: #f5f3f2;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        .input-heavy:focus {
+            border-color: #006590;
+            outline: 2px solid rgba(0, 101, 144, 0.2);
+            outline-offset: 2px;
+        }
+
+        .card-heavy {
+            background-color: #ffffff;
+            border: 2px solid #E5E5E5;
+            box-shadow: 0 4px 0 0 #E5E5E5;
+            border-radius: 1rem;
+        }
+
+        /* Checkbox styling */
+        .check-heavy {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #E5E5E5;
+            border-radius: 0.5rem;
+            background-color: #f5f3f2;
+            display: inline-grid;
+            place-content: center;
+            transition: all 0.2s;
+        }
+        .check-heavy::before {
+            content: "";
+            width: 14px;
+            height: 14px;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #ffffff;
+            background-color: #ffffff;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+        .check-heavy:checked {
+            background-color: #58cc02;
+            border-color: #58A700;
+        }
+        .check-heavy:checked::before {
+            transform: scale(1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24">
+<!-- Note: TopAppBar and BottomNav are suppressed because this is a linear Setup/Onboarding screen. -->
+<main class="max-w-container-max mx-auto px-4 pt-8">
+<header class="mb-8 text-center">
+<h1 class="text-display-lg text-primary mb-2">Build Your Avatar</h1>
+<p class="text-body-lg text-on-surface-variant">Let's set your starting stats to personalize your health journey.</p>
+</header>
+<!-- Progress Indicator -->
+<div class="mb-8 flex items-center justify-center space-x-2">
+<div class="h-3 w-12 bg-primary-container rounded-full"></div>
+<div class="h-3 w-12 bg-surface-container-highest rounded-full"></div>
+<div class="h-3 w-12 bg-surface-container-highest rounded-full"></div>
+</div>
+<form action="#" class="space-y-8" method="POST">
+<!-- Biometrics Bento -->
+<section class="card-heavy p-6 space-y-6">
+<h2 class="text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitor_weight</span>
+                    Base Stats
+                </h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Age -->
+<div class="space-y-2">
+<label class="text-label-lg uppercase text-on-surface-variant" for="age">Age</label>
+<div class="relative">
+<input class="input-heavy w-full p-4 text-body-lg h-14" id="age" placeholder="e.g. 32" type="number">
+</div>
+</div>
+<!-- Blood Group -->
+<div class="space-y-2">
+<label class="text-label-lg uppercase text-on-surface-variant" for="blood_group">Blood Type</label>
+<select class="input-heavy w-full p-4 text-body-lg h-14 appearance-none" id="blood_group">
+<option value="">Select...</option>
+<option value="A+">A+</option>
+<option value="O+">O+</option>
+<option value="B+">B+</option>
+<option value="AB+">AB+</option>
+<option value="A-">A-</option>
+<option value="O-">O-</option>
+<option value="B-">B-</option>
+<option value="AB-">AB-</option>
+</select>
+</div>
+<!-- Height -->
+<div class="space-y-2">
+<label class="text-label-lg uppercase text-on-surface-variant" for="height">Height (cm)</label>
+<input class="input-heavy w-full p-4 text-body-lg h-14" id="height" placeholder="175" type="number">
+</div>
+<!-- Weight -->
+<div class="space-y-2">
+<label class="text-label-lg uppercase text-on-surface-variant" for="weight">Weight (kg)</label>
+<input class="input-heavy w-full p-4 text-body-lg h-14" id="weight" placeholder="70" type="number">
+</div>
+</div>
+</section>
+<!-- Medical History Checkmarks -->
+<section class="card-heavy p-6 space-y-6">
+<h2 class="text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+                    History Badges
+                </h2>
+<p class="text-body-md text-on-surface-variant mb-4">Select any conditions you've experienced to adjust your difficulty curve.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="flex items-center space-x-3 p-4 border-2 border-border-gray rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="check-heavy" type="checkbox">
+<span class="text-body-lg">Hypertension</span>
+</label>
+<label class="flex items-center space-x-3 p-4 border-2 border-border-gray rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="check-heavy" type="checkbox">
+<span class="text-body-lg">Asthma</span>
+</label>
+<label class="flex items-center space-x-3 p-4 border-2 border-border-gray rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="check-heavy" type="checkbox">
+<span class="text-body-lg">Diabetes (Type 1 or 2)</span>
+</label>
+<label class="flex items-center space-x-3 p-4 border-2 border-border-gray rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer">
+<input class="check-heavy" type="checkbox">
+<span class="text-body-lg">Joint Issues</span>
+</label>
+</div>
+</section>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="btn-primary w-full h-16 text-headline-md flex items-center justify-center gap-2" type="button">
+                    Save &amp; Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<p class="text-center text-label-sm text-outline mt-4">
+                Your data is stored securely and used only to personalize your experience.
+            </p>
+</form>
+</main>
+</body></html>

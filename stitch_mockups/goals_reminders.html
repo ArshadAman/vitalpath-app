@@ -1,0 +1,303 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>VitalPath - Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#87fe45",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-container": "#2fb8ff",
+                    "secondary-fixed": "#c8e6ff",
+                    "on-surface-variant": "#3f4a36",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "inverse-surface": "#303030",
+                    "surface-tint": "#2b6c00",
+                    "on-secondary-fixed": "#001e2e",
+                    "on-tertiary-container": "#574300",
+                    "on-primary-container": "#1e5000",
+                    "surface-container": "#f0eded",
+                    "outline-variant": "#becbb1",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f5f3f2",
+                    "surface-bright": "#fbf9f8",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#6be026",
+                    "tertiary-fixed-dim": "#f4bf00",
+                    "tertiary": "#755b00",
+                    "on-secondary-container": "#004666",
+                    "outline": "#6f7b64",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e1",
+                    "primary": "#2b6c00",
+                    "surface": "#fbf9f8",
+                    "background": "#fbf9f8",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdf92",
+                    "on-primary-fixed-variant": "#1f5100",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#88ceff",
+                    "inverse-primary": "#6be026",
+                    "secondary": "#006590",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "surface-container-high": "#eae8e7",
+                    "on-background": "#1b1c1c",
+                    "tertiary-container": "#ddad00",
+                    "error": "#ba1a1a",
+                    "primary-container": "#58cc02",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-variant": "#e4e2e1",
+                    "on-primary-fixed": "#082100",
+                    "primary-shadow": "#58A700",
+                    "streak-orange": "#FF9600",
+                    "xp-yellow": "#FFC800",
+                    "error-red": "#FF4B4B",
+                    "premium-purple": "#CE82FF",
+                    "ink-muted": "#777777",
+                    "surface-gray": "#F7F7F7",
+                    "border-gray": "#E5E5E5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px",
+                    "card": "1rem",
+                    "lesson": "1.75rem"
+            },
+            "spacing": {
+                "base": "8px",
+                "xxs": "4px",
+                "xs": "8px",
+                "sm": "12px",
+                "md": "16px",
+                "lg": "24px",
+                "xl": "32px",
+                "gutter": "16px",
+                "margin-mobile": "16px",
+                "container-max": "640px"
+            },
+            "fontFamily": {
+                    "headline": [
+                            "Nunito Sans"
+                    ],
+                    "display": [
+                            "Nunito Sans"
+                    ],
+                    "body": [
+                            "Nunito Sans"
+                    ],
+                    "label": [
+                            "Nunito Sans"
+                    ]
+            },
+            "fontSize": {
+                "display-lg": ["40px", { lineHeight: "46px", letterSpacing: "-0.01em", fontWeight: "800" }],
+                "headline-lg": ["32px", { lineHeight: "38px", fontWeight: "800" }],
+                "headline-lg-mobile": ["24px", { lineHeight: "28px", fontWeight: "800" }],
+                "headline-md": ["24px", { lineHeight: "30px", fontWeight: "800" }],
+                "body-lg": ["18px", { lineHeight: "26px", fontWeight: "700" }],
+                "body-md": ["15px", { lineHeight: "22px", fontWeight: "700" }],
+                "label-lg": ["16px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "800" }],
+                "label-sm": ["13px", { lineHeight: "16px", fontWeight: "700" }]
+            },
+            boxShadow: {
+                'btn-primary': '0 4px 0 0 #58A700',
+                'card': '0 2px 0 0 #E5E5E5'
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+        
+        /* Custom UI behaviors */
+        .btn-press:active { transform: translateY(4px); box-shadow: none !important; }
+        .progress-bar-sheen { background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5]">
+<div class="flex justify-between items-center px-4 py-3 max-w-[640px] mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-border-gray overflow-hidden flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A stylized, illustrative avatar of an energetic, healthy user smiling brightly. The illustration uses thick outlines and vibrant, solid colors like primary green and bright orange to convey health and gamification. The background of the avatar is a bright, clear blue, adding to the optimistic and positive mood of the profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOr0otsujbn2ahE3FfBmn82sGuiBhwICjzU1_-khh0DM6w0GWggQqRXt49KzRDhF0Y76eVSDIDum4UkLn6PpTuOoMhll09_E70tf2trV4CW4MHx8D_q63dfwEqlXrcwLrHd_S6kVeYKzfYKucmTxKAGkQ_bDGBW_FqPvduGqdlYsf0LyxuAkuXGCw9o3h_HrO0l8YUSpdzofwxK3BALG5O-ond7nypwC8Lr5YQb-09Ba49q_wbu91w6-TOBFQx3jy8X2BDalN0LOiG">
+</div>
+<h1 class="font-headline font-extrabold text-headline-md text-primary tracking-tight">VitalPath</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:translate-y-1 active:shadow-none duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-[640px] mx-auto px-margin-mobile pt-lg pb-32 flex flex-col gap-lg">
+<!-- Header & Action -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-headline-lg font-headline text-on-surface">Your Goals</h2>
+<p class="text-body-md text-ink-muted">Stay on track, earn rewards.</p>
+</div>
+<button class="bg-streak-orange text-on-primary font-label text-label-lg px-4 py-2 rounded-lg border-2 border-streak-orange shadow-[0_4px_0_0_#CC7A00] flex items-center gap-2 btn-press transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="uppercase">New Goal</span>
+</button>
+</div>
+<!-- Progress Overview Bento -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Weekly XP -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-[1rem] p-4 shadow-card flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xp-yellow">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label text-label-sm uppercase text-on-surface-variant">Weekly XP</span>
+</div>
+<div class="text-headline-lg font-headline">1,250</div>
+<!-- Progress bar -->
+<div class="w-full h-4 bg-surface-container rounded-full overflow-hidden border-2 border-border-gray relative">
+<div class="h-full bg-xp-yellow w-[70%] absolute top-0 left-0">
+<div class="w-full h-full progress-bar-sheen"></div>
+</div>
+</div>
+<p class="text-body-md text-ink-muted text-sm">250 XP to next level</p>
+</div>
+<!-- Active Streak -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-[1rem] p-4 shadow-card flex flex-col gap-2 justify-between">
+<div class="flex items-center gap-2 text-streak-orange">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label text-label-sm uppercase text-on-surface-variant">Day Streak</span>
+</div>
+<div class="text-display-lg font-headline text-streak-orange">14</div>
+<p class="text-body-md text-ink-muted text-sm">Keep it up! 2 days to reward.</p>
+</div>
+</section>
+<!-- Active Targets List -->
+<section class="flex flex-col gap-4">
+<h3 class="text-headline-md font-headline">Active Targets</h3>
+<!-- Goal Card 1: Hydration -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-[1rem] p-4 shadow-card flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center border-2 border-secondary-fixed shadow-[0_2px_0_0_#88ceff]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<h4 class="text-body-lg font-headline">Daily Hydration</h4>
+<p class="text-body-md text-ink-muted">Drink 8 glasses of water</p>
+</div>
+</div>
+<div class="bg-surface-container-low px-3 py-1 rounded-full border-2 border-border-gray">
+<span class="text-label-sm font-label uppercase text-on-surface-variant">Daily</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-body-md font-bold text-secondary">5 / 8 Glasses</span>
+<span class="text-body-md text-ink-muted">62%</span>
+</div>
+<div class="w-full h-6 bg-surface-container rounded-full overflow-hidden border-2 border-border-gray relative">
+<div class="h-full bg-secondary w-[62%] absolute top-0 left-0 transition-all duration-500 ease-out">
+<div class="w-full h-full progress-bar-sheen"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface border-2 border-border-gray text-on-surface font-label text-label-sm uppercase py-3 rounded-lg shadow-card btn-press transition-transform">
+                        Log Water
+                    </button>
+<button class="flex-none w-12 bg-surface border-2 border-border-gray text-on-surface-variant flex items-center justify-center rounded-lg shadow-card btn-press transition-transform">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</div>
+<!-- Goal Card 2: Steps -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-[1rem] p-4 shadow-card flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center border-2 border-primary-fixed-dim shadow-[0_2px_0_0_#87fe45]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">directions_run</span>
+</div>
+<div>
+<h4 class="text-body-lg font-headline">Step Master</h4>
+<p class="text-body-md text-ink-muted">Walk 10,000 steps</p>
+</div>
+</div>
+<div class="bg-surface-container-low px-3 py-1 rounded-full border-2 border-border-gray">
+<span class="text-label-sm font-label uppercase text-on-surface-variant">Daily</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-1">
+<span class="text-body-md font-bold text-primary">8,432 / 10,000 Steps</span>
+<span class="text-body-md text-ink-muted">84%</span>
+</div>
+<div class="w-full h-6 bg-surface-container rounded-full overflow-hidden border-2 border-border-gray relative">
+<div class="h-full bg-primary w-[84%] absolute top-0 left-0 transition-all duration-500 ease-out">
+<div class="w-full h-full progress-bar-sheen"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Goal Card 3: Workout (Completed state) -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-[1rem] p-4 shadow-[0_2px_0_0_#2b6c00] flex flex-col gap-4 relative overflow-hidden">
+<!-- Checkmark watermark -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-primary/10 select-none z-0">check_circle</span>
+<div class="flex justify-between items-start relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary text-on-primary flex items-center justify-center border-2 border-primary-shadow">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+</div>
+<div>
+<h4 class="text-body-lg font-headline">Strength Training</h4>
+<p class="text-body-md text-primary font-bold">Goal Completed!</p>
+</div>
+</div>
+<div class="bg-primary px-3 py-1 rounded-full border-2 border-primary-shadow">
+<span class="text-label-sm font-label uppercase text-on-primary">+50 XP</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t-2 border-border-gray shadow-[0_-2px_0_0_#E5E5E5] md:hidden">
+<div class="flex justify-around items-center h-20 px-4 pb-safe max-w-[640px] mx-auto w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[28px]">grid_view</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[28px]">timeline</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider mt-1">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined text-[28px]">menu_book</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider mt-1">Journal</span>
+</a>
+<!-- Active State: Goals -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl p-1 active:scale-95 transition-transform duration-75 w-20" href="#">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider mt-1">Goals</span>
+</a>
+</div>
+</nav>
+</body></html>

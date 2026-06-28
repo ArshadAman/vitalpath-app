@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>VitalPath - Voice Journal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700;6..12,800;6..12,900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#87fe45",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-container": "#2fb8ff",
+                        "secondary-fixed": "#c8e6ff",
+                        "on-surface-variant": "#3f4a36",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#2b6c00",
+                        "on-secondary-fixed": "#001e2e",
+                        "on-tertiary-container": "#574300",
+                        "on-primary-container": "#1e5000",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#becbb1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3f2",
+                        "surface-bright": "#fbf9f8",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#6be026",
+                        "tertiary-fixed-dim": "#f4bf00",
+                        "tertiary": "#755b00",
+                        "on-secondary-container": "#004666",
+                        "outline": "#6f7b64",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary": "#2b6c00",
+                        "surface": "#fbf9f8",
+                        "background": "#fbf9f8",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdf92",
+                        "on-primary-fixed-variant": "#1f5100",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#88ceff",
+                        "inverse-primary": "#6be026",
+                        "secondary": "#006590",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container-high": "#eae8e7",
+                        "on-background": "#1b1c1c",
+                        "tertiary-container": "#ddad00",
+                        "error": "#ba1a1a",
+                        "primary-container": "#58cc02",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-fixed": "#082100",
+                        "primary-shadow": '#58A700',
+                        "border-gray": '#E5E5E5'
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Nunito Sans"],
+                        "display": ["Nunito Sans"],
+                        "body": ["Nunito Sans"],
+                        "label": ["Nunito Sans"]
+                    },
+                    fontSize: {
+                        "display-lg": ["40px", { lineHeight: "46px", letterSpacing: "-0.01em", fontWeight: "800" }],
+                        "headline-lg": ["32px", { lineHeight: "38px", fontWeight: "800" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "28px", fontWeight: "800" }],
+                        "headline-md": ["24px", { lineHeight: "30px", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "26px", fontWeight: "700" }],
+                        "body-md": ["15px", { lineHeight: "22px", fontWeight: "700" }],
+                        "label-lg": ["16px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "800" }],
+                        "label-sm": ["13px", { lineHeight: "16px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        .chunky-shadow {
+            box-shadow: 0 4px 0 0 var(--tw-shadow-color);
+        }
+        .chunky-shadow-sm {
+            box-shadow: 0 2px 0 0 var(--tw-shadow-color);
+        }
+        .chunky-active:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .chunky-active-sm:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+        
+        /* Audio visualizer simple animation */
+        @keyframes pulse-bar {
+            0% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+            100% { transform: scaleY(0.3); }
+        }
+        .audio-bar {
+            animation: pulse-bar 1s infinite ease-in-out;
+            transform-origin: center;
+        }
+        .audio-bar:nth-child(even) { animation-duration: 0.8s; }
+        .audio-bar:nth-child(3n) { animation-duration: 1.2s; }
+        .audio-bar:nth-child(5n) { animation-duration: 0.9s; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row pb-24 md:pb-0">
+<!-- Mobile TopAppBar -->
+<header class="w-full top-0 sticky z-40 md:hidden bg-surface dark:bg-background border-b-2 border-border-gray dark:border-outline-variant shadow-[0_2px_0_0_#E5E5E5] dark:shadow-none">
+<div class="flex justify-between items-center px-4 py-3 max-w-[640px] mx-auto w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5]">
+<img alt="patient_profile_photo" class="w-full h-full object-cover" data-alt="A macro studio portrait of a healthy individual with clear skin and bright eyes, wearing a simple white athletic shirt, set against a pristine white background. High key lighting, very detailed, clean medical app aesthetic with a subtle warm green tone reflecting the primary brand color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjUIM7wcpVOG5kR2_CO20ixpA_gOgxU70d0_-KTzeSIVf530F1xo_vEeKGabYKO-KwVm0gwQCjIsOZkBLAqkezIHbMoIHcuflePjO65_9hafd779aXtpbMYr2uh8isYKHyXs7IQfNjZMTJcJ4V4rP8rpG4QljXgtqomZ1RW5gJWDoPwZGCHeJIf-9ny42_GcvmqXqqs_U_4BK7M023unRGudtwuSTjPo7ZjQuowFEQ65w3SPmE0zpQhgnISvc0susGE1cH2oKn__jt">
+</div>
+<h1 class="font-headline font-extrabold text-headline-md text-primary dark:text-primary-fixed">VitalPath</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container border-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5] chunky-active-sm transition-all duration-100 text-on-surface-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Desktop SideNav (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 border-r-2 border-border-gray bg-surface z-40 p-4">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5]">
+<img alt="patient_profile_photo" class="w-full h-full object-cover" data-alt="A macro studio portrait of a healthy individual with clear skin and bright eyes, wearing a simple white athletic shirt, set against a pristine white background. High key lighting, very detailed, clean medical app aesthetic with a subtle warm green tone reflecting the primary brand color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU-sPtuA2nPoFbY-l8fGi4hfVY8K2E_G4gmtoYF1hFn7AqgjsvkurE6DiYtt-ia_99uCcl0-xg-vCz6CBcbFSfJJKg4s0usb3RBBO7rYBzkXvsh8Sg_F1bp2rTddakuRfEjXpeCQsFHbak9V1QCXejI77z5bZnRKPbMtu41L_S_x6Z3oztfgADj2H1l92H0Li2eTVMBzZxcMBEEEZMJrwhCNJUn8J--fJGBriz41Y4XMyhzew8LbpasgybRbf-Chu3SoFZxG1LNmMm">
+</div>
+<h1 class="font-headline font-extrabold text-headline-md text-primary">VitalPath</h1>
+</div>
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-label font-bold text-label-lg hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-label font-bold text-label-lg hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="timeline">timeline</span>
+                Timeline
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-primary bg-primary-container/10 font-label font-bold text-label-lg" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                Journal
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-surface-variant font-label font-bold text-label-lg hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+                Goals
+            </a>
+</nav>
+<div class="mt-auto">
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-surface-container border-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5] text-on-surface-variant font-label font-bold text-label-lg chunky-active-sm transition-all duration-100">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 max-w-[640px] mx-auto w-full px-4 pt-6 pb-24 md:pb-8 flex flex-col gap-6">
+<!-- Header -->
+<div class="flex justify-between items-end mb-2">
+<div>
+<h2 class="font-headline font-extrabold text-headline-lg-mobile md:text-headline-lg text-on-surface">Voice Journal</h2>
+<p class="font-body text-body-md text-on-surface-variant mt-1">Record today's symptoms and habits.</p>
+</div>
+<div class="bg-tertiary-fixed-dim text-on-tertiary-fixed-variant px-3 py-1 rounded-full font-label font-bold text-label-sm border-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5]">
+                Today
+            </div>
+</div>
+<!-- Recording Area -->
+<section class="bg-surface-container-lowest border-2 border-border-gray rounded-xl p-6 flex flex-col items-center justify-center shadow-primary-shadow chunky-shadow transition-all duration-200 relative overflow-hidden" id="record-card">
+<!-- Audio Visualizer (Hidden by default, shown when recording) -->
+<div class="hidden w-full h-24 flex items-center justify-center gap-1 mb-6 opacity-0 transition-opacity duration-300" id="visualizer">
+<div class="w-2 bg-primary rounded-full audio-bar h-8"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-12"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-6"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-16"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-10"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-20"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-14"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-8"></div>
+<div class="w-2 bg-primary rounded-full audio-bar h-12"></div>
+</div>
+<!-- Big Record Button -->
+<button class="w-24 h-24 rounded-full bg-error text-on-error flex items-center justify-center border-4 border-surface-container-lowest shadow-[0_6px_0_0_#93000a] active:translate-y-[6px] active:shadow-none transition-all duration-100 z-10 mb-4" id="btn-record" onclick="toggleRecording()">
+<span class="material-symbols-outlined text-4xl" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<p class="font-body text-body-lg text-on-surface-variant text-center" id="record-status">Tap to start logging</p>
+<p class="font-headline text-headline-md text-error hidden mt-2" id="record-timer">00:00</p>
+</section>
+<!-- Parsed Insights (Bento Grid) -->
+<section class="mt-4">
+<h3 class="font-headline font-extrabold text-headline-md text-on-surface mb-4">Detected Insights</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Insight Card 1 -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-4 shadow-primary-shadow chunky-shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined bg-primary-container/20 p-1.5 rounded-lg" data-icon="smoking_rooms">smoking_rooms</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider">Habit Logged</span>
+</div>
+<p class="font-body text-body-lg text-on-surface">Smoking</p>
+<p class="font-body text-body-md text-on-surface-variant">3 Cigarettes • 2:00 PM</p>
+</div>
+<!-- Insight Card 2 -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-xl p-4 shadow-[0_2px_0_0_#E5E5E5] chunky-shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined bg-error-container p-1.5 rounded-lg text-on-error-container" data-icon="sick">sick</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider">Symptom</span>
+</div>
+<p class="font-body text-body-lg text-on-surface">Mild Headache</p>
+<p class="font-body text-body-md text-on-surface-variant">Duration: 2 hrs</p>
+</div>
+<!-- Insight Card 3 (Full width) -->
+<div class="col-span-2 bg-surface-container-lowest border-2 border-border-gray rounded-xl p-4 shadow-[0_2px_0_0_#E5E5E5] chunky-shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container text-on-secondary-container w-10 h-10 rounded-full flex items-center justify-center font-headline font-extrabold text-headline-md">
+<span class="material-symbols-outlined" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<p class="font-label font-bold text-label-sm uppercase tracking-wider text-secondary">Hydration Goal</p>
+<p class="font-body text-body-lg text-on-surface">+1 Glass Water</p>
+</div>
+</div>
+<button class="bg-surface-container border-2 border-border-gray rounded-lg px-3 py-1 font-label font-bold text-label-sm shadow-[0_2px_0_0_#E5E5E5] chunky-active-sm">Undo</button>
+</div>
+</div>
+</section>
+<!-- Transcript Log -->
+<section class="mt-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline font-extrabold text-headline-md text-on-surface">Recent Logs</h3>
+<button class="text-primary font-label font-bold text-label-sm uppercase tracking-wider hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Log Item -->
+<div class="bg-surface-container-lowest border-2 border-border-gray rounded-xl p-4 flex flex-col gap-3 shadow-[0_2px_0_0_#E5E5E5]">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary bg-primary-container/20 rounded-full p-1 text-sm" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-label font-bold text-label-sm text-on-surface-variant">Today, 2:15 PM</span>
+</div>
+<span class="bg-surface-container px-2 py-0.5 rounded text-xs font-bold text-on-surface-variant border border-border-gray">00:45</span>
+</div>
+<p class="font-body text-body-md text-on-surface italic border-l-4 border-primary pl-3 bg-surface p-2 rounded-r">
+                        "I had a mild headache around noon that lasted about two hours. I also ended up having three cigarettes after lunch, which isn't great. Trying to drink more water now, just had a glass."
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-background border-t-2 border-border-gray md:hidden shadow-[0_-2px_0_0_#E5E5E5]">
+<div class="flex justify-around items-center h-20 px-4 pb-safe max-w-[640px] mx-auto w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-1 hover:text-primary dark:hover:text-primary-fixed active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-1 hover:text-primary dark:hover:text-primary-fixed active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="timeline">timeline</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider text-[10px]">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/10 rounded-xl p-1 px-4 active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider text-[10px]">Journal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-1 hover:text-primary dark:hover:text-primary-fixed active:scale-95 transition-transform duration-75" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="emoji_events">emoji_events</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider text-[10px]">Goals</span>
+</a>
+</div>
+</nav>
+<script>
+        let isRecording = false;
+        let timerInterval;
+        let seconds = 0;
+
+        function toggleRecording() {
+            const btn = document.getElementById('btn-record');
+            const visualizer = document.getElementById('visualizer');
+            const status = document.getElementById('record-status');
+            const timer = document.getElementById('record-timer');
+            const card = document.getElementById('record-card');
+
+            isRecording = !isRecording;
+
+            if (isRecording) {
+                // UI Changes for Recording State
+                btn.classList.remove('bg-error', 'shadow-[0_6px_0_0_#93000a]');
+                btn.classList.add('bg-surface-container', 'border-error', 'text-error', 'shadow-[0_6px_0_0_#E5E5E5]');
+                btn.innerHTML = '<span class="material-symbols-outlined text-4xl" data-icon="stop">stop</span>';
+                
+                card.classList.replace('border-border-gray', 'border-error');
+                card.classList.replace('shadow-primary-shadow', 'shadow-[0_4px_0_0_#ba1a1a]');
+                
+                status.classList.add('hidden');
+                timer.classList.remove('hidden');
+                
+                visualizer.classList.remove('hidden');
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => visualizer.classList.remove('opacity-0'), 10);
+
+                // Start Timer
+                seconds = 0;
+                timer.innerText = "00:00";
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                    const secs = (seconds % 60).toString().padStart(2, '0');
+                    timer.innerText = `${mins}:${secs}`;
+                }, 1000);
+
+            } else {
+                // UI Changes for Stopped State
+                btn.classList.add('bg-error', 'shadow-[0_6px_0_0_#93000a]');
+                btn.classList.remove('bg-surface-container', 'border-error', 'text-error', 'shadow-[0_6px_0_0_#E5E5E5]');
+                btn.innerHTML = '<span class="material-symbols-outlined text-4xl" data-icon="mic" style="font-variation-settings: \'FILL\' 1;">mic</span>';
+                
+                card.classList.replace('border-error', 'border-border-gray');
+                card.classList.replace('shadow-[0_4px_0_0_#ba1a1a]', 'shadow-primary-shadow');
+                
+                status.classList.remove('hidden');
+                status.innerText = "Processing audio...";
+                timer.classList.add('hidden');
+                
+                visualizer.classList.add('opacity-0');
+                setTimeout(() => visualizer.classList.add('hidden'), 300);
+
+                clearInterval(timerInterval);
+                
+                // Simulate processing
+                setTimeout(() => {
+                    status.innerText = "Tap to start logging";
+                }, 2000);
+            }
+        }
+    </script>
+</body></html>

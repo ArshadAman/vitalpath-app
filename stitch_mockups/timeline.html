@@ -1,0 +1,245 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>VitalPath - Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#87fe45",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-container": "#2fb8ff",
+                        "secondary-fixed": "#c8e6ff",
+                        "on-surface-variant": "#3f4a36",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#2b6c00",
+                        "on-secondary-fixed": "#001e2e",
+                        "on-tertiary-container": "#574300",
+                        "on-primary-container": "#1e5000",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#becbb1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f5f3f2",
+                        "surface-bright": "#fbf9f8",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#6be026",
+                        "tertiary-fixed-dim": "#f4bf00",
+                        "tertiary": "#755b00",
+                        "on-secondary-container": "#004666",
+                        "outline": "#6f7b64",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary": "#2b6c00",
+                        "surface": "#fbf9f8",
+                        "background": "#fbf9f8",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdf92",
+                        "on-primary-fixed-variant": "#1f5100",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#88ceff",
+                        "inverse-primary": "#6be026",
+                        "secondary": "#006590",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container-high": "#eae8e7",
+                        "on-background": "#1b1c1c",
+                        "tertiary-container": "#ddad00",
+                        "error": "#ba1a1a",
+                        "primary-container": "#58cc02",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-fixed": "#082100",
+                        "border-gray": "#E5E5E5",
+                        "primary-shadow": "#58A700",
+                        "streak-orange": "#FF9600",
+                        "xp-yellow": "#FFC800",
+                        "error-red": "#FF4B4B"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "sm": "0.25rem",
+                        "md": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Nunito Sans", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                        "label": ["Nunito Sans", "sans-serif"]
+                    },
+                    spacing: {
+                        "base": "8px",
+                        "xxs": "4px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "container-max": "640px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Nunito Sans', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 700; }
+        .btn-pressable {
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .btn-pressable:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 0 var(--tw-shadow-color) !important;
+        }
+        .card-pressable {
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .card-pressable:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 0 #E5E5E5 !important;
+        }
+        /* Custom Scrollbar for pills */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24 flex justify-center">
+<div class="w-full max-w-container-max relative">
+<!-- TopAppBar Shared Component -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b-2 border-border-gray shadow-[0_2px_0_0_#E5E5E5]">
+<div class="flex justify-between items-center px-4 py-3 max-w-[640px] mx-auto w-full">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A small circular avatar profile picture of an energetic young adult wearing bright activewear, smiling enthusiastically in a highly lit, clean studio environment. The lighting is crisp and the style leans towards high-fidelity modern app portraiture, reflecting health and vitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsCImSjuhx1DXSzw4GzXKquOs_e5HvL0o2EgEy6s8PJyAqm55ucgJ3s88bwXOIPWXEkvrHWBUgtA7e87N_HuO11703r7nvlrUtO9voSzPnnoQKXn1N4ImtKOQCFdwLGxWkjerd28cUbZzUuKgtyn9PD7ov-2-I0-UxPwgmSuSAwp3-v_tHUUVj0LSOHbhJU4ao5UxEgefL5n5kXU3jLD6LO_ONM_CWMtkMT-cUTT5nHE8pVfxqdfzot-kFNYsB4t-qVHuQYHDIg1MQ">
+<h1 class="font-headline font-extrabold text-headline-md text-primary">VitalPath</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low transition-colors active:translate-y-1 active:shadow-none transition-all duration-100 text-on-surface-variant">
+<span class="material-symbols-outlined text-2xl" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-margin-mobile pt-lg flex flex-col gap-lg pb-xl">
+<!-- Header & Search -->
+<div class="flex flex-col gap-md">
+<div>
+<h2 class="font-headline font-extrabold text-headline-lg text-on-surface">Your Timeline</h2>
+<p class="font-body font-bold text-body-md text-ink-muted">Tracking your journey, one step at a time.</p>
+</div>
+<!-- Search Input -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="bg-surface-container-low border-2 border-border-gray text-on-surface text-body-md font-bold rounded-lg focus:ring-secondary focus:border-secondary block w-full pl-10 p-3 h-14 outline-none transition-colors shadow-[0_2px_0_0_#E5E5E5]" placeholder="Search logs, meds, vitals..." type="text">
+</div>
+<!-- Filter Pills -->
+<div class="flex overflow-x-auto gap-3 py-2 hide-scrollbar -mx-margin-mobile px-margin-mobile">
+<button class="whitespace-nowrap bg-primary text-on-primary font-label font-extrabold text-label-lg px-5 py-3 rounded-full border-2 border-primary shadow-[0_4px_0_0_#58A700] btn-pressable flex items-center gap-2">
+                        All Activity
+                    </button>
+<button class="whitespace-nowrap bg-surface text-on-surface-variant font-label font-extrabold text-label-lg px-5 py-3 rounded-full border-2 border-border-gray shadow-[0_4px_0_0_#E5E5E5] btn-pressable flex items-center gap-2 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg" data-icon="favorite">favorite</span> Vitals
+                    </button>
+<button class="whitespace-nowrap bg-surface text-on-surface-variant font-label font-extrabold text-label-lg px-5 py-3 rounded-full border-2 border-border-gray shadow-[0_4px_0_0_#E5E5E5] btn-pressable flex items-center gap-2 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg" data-icon="medication">medication</span> Meds
+                    </button>
+<button class="whitespace-nowrap bg-surface text-on-surface-variant font-label font-extrabold text-label-lg px-5 py-3 rounded-full border-2 border-border-gray shadow-[0_4px_0_0_#E5E5E5] btn-pressable flex items-center gap-2 hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-lg" data-icon="directions_run">directions_run</span> Activity
+                    </button>
+</div>
+</div>
+<!-- Timeline Feed -->
+<div class="relative flex flex-col gap-lg pt-4">
+<!-- Vertical Track Line -->
+<div class="absolute left-6 top-0 bottom-0 w-1 bg-surface-container-highest rounded-full z-0"></div>
+<!-- Log Entry: Vitals -->
+<div class="relative z-10 flex gap-4 w-full group">
+<div class="flex-shrink-0 w-12 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-error-container border-2 border-error text-error flex items-center justify-center shadow-[0_2px_0_0_#ba1a1a] z-10 relative">
+<span class="material-symbols-outlined" data-icon="favorite" data-weight="fill">favorite</span>
+</div>
+</div>
+<div class="flex-grow pt-1">
+<p class="text-label-sm font-label font-extrabold text-outline mb-1 uppercase tracking-wider">Today, 8:30 AM</p>
+<div class="bg-surface border-2 border-border-gray rounded-xl p-4 shadow-[0_4px_0_0_#E5E5E5] card-pressable cursor-pointer">
+<h3 class="font-headline font-extrabold text-headline-md text-on-surface mb-1">Morning Vitals Logged</h3>
+<div class="flex flex-wrap gap-2 mt-3">
+<div class="bg-surface-container-low px-3 py-2 rounded-lg border-2 border-surface-container-highest flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-body font-bold text-body-md text-on-surface">118/75</span>
+</div>
+<div class="bg-surface-container-low px-3 py-2 rounded-lg border-2 border-surface-container-highest flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="water_drop">water_drop</span>
+<span class="font-body font-bold text-body-md text-on-surface">98% SpO2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Entry: Medication -->
+<div class="relative z-10 flex gap-4 w-full group">
+<div class="flex-shrink-0 w-12 flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container border-2 border-secondary text-on-secondary-container flex items-center justify-center shadow-[0_2px_0_0_#006590] z-10 relative">
+<span class="material-symbols-outlined" data-icon="medication" data-weight="fill">medication</span>
+</div>
+</div>
+<div class="flex-grow pt-1">
+<p class="text-label-sm font-label font-extrabold text-outline mb-1 uppercase tracking-wider">Today, 8:00 AM</p>
+<div class="bg-surface border-2 border-border-gray rounded-xl p-4 shadow-[0_4px_0_0_#E5E5E5] card-pressable cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline font-extrabold text-headline-md text-on-surface">Daily Supplements</h3>
+<div class="bg-primary-container/20 text-primary-container px-2 py-1 rounded-sm border-2 border-primary-container flex items-center">
+<span class="material-symbols-outlined text-sm" data-icon="check" data-weight="fill">check</span>
+</div>
+</div>
+<p class="font-body font-bold text-body-md text-on-surface-variant">Vitamin D (2000 IU), Fish Oil</p>
+<div class="mt-3 bg-xp-yellow/10 border-2 border-xp-yellow text-tertiary-container rounded-lg p-2 flex items-center gap-2 font-label font-extrabold text-sm inline-flex">
+<span class="material-symbols-outlined" data-icon="local_fire_department" data-weight="fill">local_fire_department</span>
+                                5 Day Streak!
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shared Component -->
+<nav class="fixed bottom-0 w-full z-50 border-t-2 border-border-gray bg-surface shadow-[0_-2px_0_0_#E5E5E5]">
+<div class="flex justify-around items-center h-20 px-4 pb-safe max-w-[640px] mx-auto w-full">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl mb-1" data-icon="grid_view">grid_view</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl p-1 active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl mb-1" data-icon="timeline" data-weight="fill">timeline</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider text-primary font-black">Timeline</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider">Journal</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-1 hover:text-primary active:scale-95 transition-transform duration-75">
+<span class="material-symbols-outlined text-3xl mb-1" data-icon="emoji_events">emoji_events</span>
+<span class="font-label font-bold text-label-sm uppercase tracking-wider">Goals</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

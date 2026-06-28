@@ -1,0 +1,258 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>VitalPath - Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#87fe45",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-container": "#2fb8ff",
+                    "secondary-fixed": "#c8e6ff",
+                    "on-surface-variant": "#3f4a36",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "inverse-surface": "#303030",
+                    "surface-tint": "#2b6c00",
+                    "on-secondary-fixed": "#001e2e",
+                    "on-tertiary-container": "#574300",
+                    "on-primary-container": "#1e5000",
+                    "surface-container": "#f0eded",
+                    "outline-variant": "#becbb1",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f5f3f2",
+                    "surface-bright": "#fbf9f8",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#6be026",
+                    "tertiary-fixed-dim": "#f4bf00",
+                    "tertiary": "#755b00",
+                    "on-secondary-container": "#004666",
+                    "outline": "#6f7b64",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e1",
+                    "primary": "#2b6c00",
+                    "surface": "#fbf9f8",
+                    "background": "#fbf9f8",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdf92",
+                    "on-primary-fixed-variant": "#1f5100",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#88ceff",
+                    "inverse-primary": "#6be026",
+                    "secondary": "#006590",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "surface-container-high": "#eae8e7",
+                    "on-background": "#1b1c1c",
+                    "tertiary-container": "#ddad00",
+                    "error": "#ba1a1a",
+                    "primary-container": "#58cc02",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-variant": "#e4e2e1",
+                    "on-primary-fixed": "#082100",
+                    "primary-shadow": "#58A700",
+                    "streak-orange": "#FF9600",
+                    "xp-yellow": "#FFC800",
+                    "error-red": "#FF4B4B",
+                    "premium-purple": "#CE82FF",
+                    "ink-muted": "#777777",
+                    "surface-gray": "#F7F7F7",
+                    "border-gray": "#E5E5E5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "3xl": "1.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+              "base": "8px",
+              "xxs": "4px",
+              "xs": "8px",
+              "sm": "12px",
+              "md": "16px",
+              "lg": "24px",
+              "xl": "32px",
+              "gutter": "16px",
+              "margin-mobile": "16px",
+              "container-max": "640px"
+            },
+            "fontFamily": {
+                    "headline": ["Nunito Sans"],
+                    "display": ["Nunito Sans"],
+                    "body": ["Nunito Sans"],
+                    "label": ["Nunito Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Nunito Sans', sans-serif;
+        background-color: theme('colors.background');
+        color: theme('colors.on-background');
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+      }
+      
+      /* Tangible Button Styles */
+      .btn-primary {
+        background-color: theme('colors.primary');
+        color: theme('colors.on-primary');
+        box-shadow: 0 4px 0 0 theme('colors.primary-shadow');
+        transition: transform 0.1s, box-shadow 0.1s;
+      }
+      .btn-primary:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0 theme('colors.primary-shadow');
+      }
+
+      .btn-secondary {
+        background-color: theme('colors.surface-container-highest');
+        color: theme('colors.on-surface');
+        box-shadow: 0 4px 0 0 theme('colors.outline-variant');
+        transition: transform 0.1s, box-shadow 0.1s;
+      }
+      .btn-secondary:active {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0 theme('colors.outline-variant');
+      }
+
+      /* Input Styles */
+      .input-tangible {
+        border: 2px solid theme('colors.border-gray');
+        background-color: theme('colors.surface-gray');
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .input-tangible:focus {
+        border-color: theme('colors.secondary');
+        box-shadow: 0 0 0 2px theme('colors.secondary-fixed');
+        outline: none;
+      }
+
+      /* Card Style */
+      .card-tangible {
+        border: 2px solid theme('colors.border-gray');
+        box-shadow: 0 4px 0 0 theme('colors.border-gray');
+        background-color: theme('colors.surface-container-lowest');
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col justify-center items-center p-margin-mobile">
+<main class="w-full max-w-container-max mx-auto relative z-10 flex flex-col justify-center min-h-[795px]">
+<!-- Header / Brand -->
+<div class="text-center mb-lg">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary-container text-primary mb-sm shadow-[0_4px_0_0_#58A700]">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<h1 class="font-headline font-extrabold text-[32px] text-on-surface leading-tight tracking-tight">Create your<br>Health Profile</h1>
+<p class="font-body font-bold text-[18px] text-on-surface-variant mt-xs">Join VitalPath to track your journey.</p>
+</div>
+<!-- Registration Card -->
+<form class="card-tangible rounded-3xl p-lg flex flex-col gap-md">
+<!-- Name Field -->
+<div class="flex flex-col gap-xxs">
+<label class="font-label font-extrabold text-[13px] text-on-surface-variant uppercase tracking-wider pl-1" for="fullName">Full Name</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+<input class="input-tangible w-full h-[56px] rounded-2xl pl-12 pr-sm font-body font-bold text-[18px] text-on-surface placeholder:text-outline-variant" id="fullName" placeholder="Jane Doe" type="text">
+</div>
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-xxs">
+<label class="font-label font-extrabold text-[13px] text-on-surface-variant uppercase tracking-wider pl-1" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">mail</span>
+</div>
+<input class="input-tangible w-full h-[56px] rounded-2xl pl-12 pr-sm font-body font-bold text-[18px] text-on-surface placeholder:text-outline-variant" id="email" placeholder="jane@example.com" type="email">
+</div>
+</div>
+<!-- Phone Field -->
+<div class="flex flex-col gap-xxs">
+<label class="font-label font-extrabold text-[13px] text-on-surface-variant uppercase tracking-wider pl-1" for="phone">Phone Number</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">call</span>
+</div>
+<input class="input-tangible w-full h-[56px] rounded-2xl pl-12 pr-sm font-body font-bold text-[18px] text-on-surface placeholder:text-outline-variant" id="phone" placeholder="(555) 000-0000" type="tel">
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xxs">
+<label class="font-label font-extrabold text-[13px] text-on-surface-variant uppercase tracking-wider pl-1" for="password">Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<input class="input-tangible w-full h-[56px] rounded-2xl pl-12 pr-12 font-body font-bold text-[18px] text-on-surface placeholder:text-outline-variant" id="password" placeholder="••••••••" type="password">
+<button class="absolute inset-y-0 right-0 pr-sm flex items-center text-outline hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="btn-primary w-full h-[64px] rounded-2xl font-headline font-extrabold text-[20px] uppercase tracking-wider mt-sm flex items-center justify-center gap-xs" type="button">
+        START JOURNEY
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-weight: 800;">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative flex items-center py-xs">
+<div class="flex-grow border-t-2 border-border-gray"></div>
+<span class="flex-shrink-0 mx-4 font-label font-extrabold text-[13px] text-outline uppercase tracking-wider">or</span>
+<div class="flex-grow border-t-2 border-border-gray"></div>
+</div>
+<!-- Secondary Actions -->
+<button class="btn-secondary w-full h-[56px] rounded-2xl font-body font-bold text-[16px] flex items-center justify-center gap-sm" type="button">
+<span class="material-symbols-outlined">health_and_safety</span>
+        Continue with Provider
+      </button>
+</form>
+<!-- Footer Links -->
+<div class="text-center mt-lg">
+<p class="font-body font-bold text-[15px] text-on-surface-variant">
+        Already on the path? 
+        <a class="text-primary hover:text-primary-shadow underline decoration-2 underline-offset-4" href="#">Log in here</a>
+</p>
+</div>
+</main>
+<script>
+    // Add simple interaction for the password visibility toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.querySelector('button[type="button"] span.material-symbols-outlined:has(+ :contains("visibility"))')?.parentElement;
+      if(toggleBtn) {
+          toggleBtn.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            const icon = this.querySelector('span');
+            if (input.type === 'password') {
+              input.type = 'text';
+              icon.textContent = 'visibility_off';
+            } else {
+              input.type = 'password';
+              icon.textContent = 'visibility';
+            }
+          });
+      }
+    });
+  </script>
+</body></html>
